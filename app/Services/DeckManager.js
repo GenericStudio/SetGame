@@ -6,6 +6,7 @@ SetGameApp.factory('GameManager', function () {
     game.numbers = ["one", "two", "three"];
 
     //Assuming a deck contains each unique card combination once
+    //This function reinitializes the deck
     game.NewGame = function () {
       game.deck = [];
       game.active_cards = [];game.removed_sets=[];
@@ -26,6 +27,7 @@ SetGameApp.factory('GameManager', function () {
       }
       shuffle(game.deck);
     }
+    //This function scans the active cards for sets
     game.FindAllSets = function () {
       game.active_sets = [];
       for (var card1 in game.active_cards) {
@@ -61,12 +63,14 @@ SetGameApp.factory('GameManager', function () {
       }
       game.active_sets.sort(function (a, b) { return a[0].index - b[0].index });
     }
+    //This function returns a card from the deck and removes that card from the deck
     game.DrawCard = function () {
       if (game.deck.length > 0) {
         game.active_cards.push(game.deck[0]);
         game.deck.splice(0, 1);
       }
     }
+    //Stack overflow shuffle function
     function shuffle(a) {
       var j, x, i;
       for (i = a.length; i; i -= 1) {
@@ -76,6 +80,7 @@ SetGameApp.factory('GameManager', function () {
         a[j] = x;
       }
     }
+    //Removes a set from the active cards, adds it to claimed sets, and draws new cards from deck to replace them
     game.RemoveSet = function (Set) {
       game.removed_sets.push(Set);
       for (var card in Set) {
@@ -85,7 +90,9 @@ SetGameApp.factory('GameManager', function () {
       }
     }
 
+    //Determines if 3 cards are part of a set
     game.GetSets = function (cards) {
+      if(cards.length!=3) return;
       var set = {};
       var sets = [];
       set.colors = [];
