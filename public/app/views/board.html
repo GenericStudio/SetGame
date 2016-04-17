@@ -1,0 +1,28 @@
+<section>
+    <style>
+        .selected {
+            background-color: saddlebrown;
+        }
+    </style>
+    <div ng-click="InitializeGame();"> {{GameState}}</div>
+    <div>Cards left in Deck: {{SetGameFactory.deck.length}}</div>
+    <div>Cards in play: {{SetGameFactory.active_cards.length}}</div>
+    <div>Sets in play: {{SetGameFactory.active_sets.length}}</div>
+    <div>Sets already found: {{SetGameFactory.removed_sets.length}}</div>
+    <div ng-if="Sets.length==4" ng-click="SetGameFactory.RemoveSet(SelectedCards);">Take Set</div>
+    <div ng-click="PlayRound()">Auto-Game</div>
+    <div ng-click="PlaySingleHand()">Auto-Round</div>
+    <div ng-click="FindSingleHand()">Hint</div>
+
+    <div style="height:250px;,width:250px; margin:25px;padding:25px; border-radius:10px; float:left;" ng-repeat='card in SetGameFactory.active_cards'
+        ng-class='{"selected":SelectedCards.indexOf(card)!=-1}' ng-click="SelectCard(card)">
+
+        <p> {{card.color}} </p>
+        <p> {{card.shape}} </p>
+        <p> {{card.shading}} </p>
+        <p> {{card.number}} </p>
+
+    </div>
+
+    <div ng-repeat="set in SetGameFactory.removed_sets">{{set}}</div>
+</section>
