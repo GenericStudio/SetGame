@@ -1,0 +1,24 @@
+<div>
+    <div class="row">
+        <controls class="col s3" style="height:100vh"></controls>
+        <div class="col s8">
+            <div class="row indigo lighten-3">
+                <h1 ng-if="GameManager.active_cards != undefined && GameManager.active_cards.length>0">Availible cards</h1>
+                <div class=" deep-purple lighten-5">
+                    <div class="col s3" ng-repeat='card in GameManager.active_cards' ng-class='{"blue":SelectedCards.indexOf(card)!=-1}' ng-click="SelectCard(card)">
+                        <card></card>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row green lighten-2">
+                <h1 ng-if="GameManager.removed_sets != undefined && GameManager.removed_sets.length>0" class="col s12">Claimed Sets</h1>
+                <div class="row" ng-repeat="set in GameManager.removed_sets">
+                    <div class="col s3" ng-repeat="card in set">
+                        <card></card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

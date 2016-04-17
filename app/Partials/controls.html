@@ -1,0 +1,14 @@
+<div class='row card teal lighten-5'>
+    <div class="card waves-effect waves-light btn" ng-click="InitializeGame();"> {{GameState}}</div>
+    <div ng-if="GameState == 'Restart'">
+        <div class='card'>Cards left in Deck: {{GameManager.deck.length}}</div>
+        <div class='card'>Cards in play: {{GameManager.active_cards.length}}</div>
+        <div class='card'>Sets on board: {{GameManager.active_sets.length}}</div>
+        <div class='card'>Sets claimed: {{GameManager.removed_sets.length}}</div>
+        <div class="card waves-effect waves-light btn" ng-click="PlayRound()">Play all Rounds</div>
+        <div class="card waves-effect waves-light btn" ng-click="PlaySingleHand()">Play 1 Round</div>
+        <div class="card waves-effect waves-light btn" ng-click="FindSingleHand()">Highlight Set</div>
+        <div class="card waves-effect waves-light btn" ng-if="Sets.length==4" ng-click="ClaimSet();">Claim Set</div>
+        <div class="card waves-effect waves-light btn disabled"  ng-if="Sets.length!=4">Claim Set</div>
+    </div>
+</div>
