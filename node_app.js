@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '/app/views/app.html'));
+    res.sendFile(path.join(__dirname, '/app/app.html'));
 });
 
 app.listen(3000, "0.0.0.0");
