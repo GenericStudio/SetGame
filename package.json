@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.14.2",
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",
     "fs": "0.0.2",
     "nodemon": "^1.8.1",
-    "path": "^0.12.7",
-    "request": "^2.69.0"
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,17 +1,12 @@
 var express = require('express'),
-    bodyParser = require('body-parser'),
-    request = require('request'),
     path = require('path'),
-    fs = require('fs'),
     app = express();
 
-// tell your app to use the modules
+//Use modules
+//Set apps root directory
 app.use(express.static(path.join(__dirname, 'app')));
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true })); 
 
-
-
+//Simplest router ever. All routing handled via default GETS in angular
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '/app/app.html'));
 });
