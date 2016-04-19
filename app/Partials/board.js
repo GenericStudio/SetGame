@@ -11,9 +11,6 @@ SetGameApp.directive('board', function () {
                 $scope.SelectedCards = [];
                 $scope.GameManager = GameManager;
                 GameManager.NewGame();
-                while (GameManager.active_cards.length < 12) {
-                    GameManager.DrawCard();
-                }
             }
             //Toggles selection of a card
             $scope.SelectCard = function (card) {
@@ -38,7 +35,6 @@ SetGameApp.directive('board', function () {
             }
             //Plays a full gamne of Set
             $scope.PlayRound = function () {
-                GameManager.FindAllSets();
                 while (GameManager.active_sets.length > 0 || GameManager.deck.length > 0) {
                     $scope.PlaySingleHand();
                 }
@@ -48,15 +44,11 @@ SetGameApp.directive('board', function () {
                 if (GameManager.active_sets.length > 0) {
                     GameManager.RemoveSet(GameManager.active_sets[0]);
                 } else {
-                    GameManager.DrawCard();
-                    GameManager.DrawCard();
-                    GameManager.DrawCard();
+                    GameManager.DrawCards();
                 }
-                GameManager.FindAllSets();
             }
             //Finds, but does not claim a single hand of set
             $scope.FindSingleHand = function () {
-                GameManager.FindAllSets();
                 if (GameManager.active_sets.length > 0) {
                     $scope.SelectCards(GameManager.active_sets[Math.floor(Math.random() * GameManager.active_sets.length)]);
                 }
